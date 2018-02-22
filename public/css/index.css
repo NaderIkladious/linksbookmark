@@ -1,6 +1,10 @@
 .categories {
   padding-top: 20px;
 }
+.categories a,
+.categories a:hover {
+  text-decoration: none;
+}
 .categories .card-title,
 .add-category-form h4 {
   margin-top: 10px;
