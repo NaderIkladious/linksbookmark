@@ -1,0 +1,44 @@
+.category-small {
+  margin-top: 10px;
+}
+.category-small .category-icon {
+  float: left;
+}
+.category-small .category-icon i {
+  font-size: 3em;
+}
+.category-small .category-title {
+  float: left;
+  margin: 14px 0 0 16px;
+}
+table tr td,
+table tr th {
+  background-color: transparent !important;
+}
+.table th, .table td {
+  padding-bottom: 0;
+}
+table tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+table tr td:nth-child(2) {
+  text-align: left;
+}
+table tr:hover .bookmark-options {
+  opacity: 1;
+  pointer-events: auto;
+}
+.bookmark-options {
+  opacity: 0;
+  pointer-events: none;
+  padding: 0;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+.bookmark-options li {
+  display: inline;
+  margin-right: 10px;
+}
+.bookmark-options li i {
+  cursor: pointer;
+}
