@@ -24,7 +24,7 @@ table tr:nth-child(even) {
 table tr td:nth-child(2) {
   text-align: left;
 }
-tabble tr img {
+table tr img {
   width: 16px;
   height: 16px;
 }
