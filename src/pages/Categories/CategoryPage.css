@@ -24,6 +24,10 @@ table tr:nth-child(even) {
 table tr td:nth-child(2) {
   text-align: left;
 }
+tabble tr img {
+  width: 16px;
+  height: 16px;
+}
 table tr:hover .bookmark-options {
   opacity: 1;
   pointer-events: auto;
