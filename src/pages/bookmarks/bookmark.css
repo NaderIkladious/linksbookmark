@@ -18,3 +18,21 @@ tr a:hover {
 tr a:hover span {
   color: #989898;
 }
+th {
+  width: 30px !important;
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+table td:last-child {
+  width: 80px;
+}
+.title-edit input {
+  background: transparent;
+  border: none;
+  font-family: sans-serif;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid;
+  padding: 0px 6px;
+}

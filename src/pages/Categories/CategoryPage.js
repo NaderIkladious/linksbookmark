@@ -40,7 +40,8 @@ export default class CategoryPage extends React.Component {
           id: bookmark.key,
           title: bookmark.val().title,
           url: bookmark.val().url,
-          favicon: bookmark.val().favicon
+          favicon: bookmark.val().favicon,
+          categoryId: bookmark.val().categoryId,
         })
         this.setState({
           bookmarks: previousBookmarks,
@@ -50,6 +51,22 @@ export default class CategoryPage extends React.Component {
       for (var i = 0; i < previousBookmarks.length; i++) {
         if (previousBookmarks[i].id === bookmark.key) {
           previousBookmarks.splice(i, 1);
+        }
+      }
+      this.setState({
+        bookmarks: previousBookmarks,
+      })
+    });
+    bookmarks.on('child_changed', bookmark => {
+      for (var i = 0; i < previousBookmarks.length; i++) {
+        if (previousBookmarks[i].id === bookmark.key) {
+          previousBookmarks[i] = {
+            id: bookmark.key,
+            title: bookmark.val().title,
+            url: bookmark.val().url,
+            favicon: bookmark.val().favicon,
+            categoryId: bookmark.val().categoryId,
+          }
         }
       }
       this.setState({
@@ -75,6 +92,7 @@ export default class CategoryPage extends React.Component {
                 this.state.bookmarks.map(bookmark => {
                   return (
                     <Bookmark 
+                      key={bookmark.id}
                       bookmark={bookmark}
                       removeBookmark={this.removeBookmark.bind(this)}
                     />
