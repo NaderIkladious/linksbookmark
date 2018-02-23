@@ -1,15 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: true,
+    }
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
+  toggleMenu() {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    })
+  }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">Sketchy Bookmark</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" onClick={this.toggleMenu}>
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarColor03">
+        <div className={ this.state.collapsed ? "collapse navbar-collapse" : "collapse navbar-collapse show" }  id="navbarColor03">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink exact className="nav-link" activeClassName="active" to='/'>Home</NavLink>
