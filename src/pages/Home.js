@@ -11,6 +11,7 @@ export default class Home extends React.Component {
       chosenCategory: false,
       newBookmarkUrl: '',
     }
+    console.log(this);
   }
   handleSaving(e) {
     e.preventDefault();

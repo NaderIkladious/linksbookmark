@@ -1,5 +1,16 @@
+.nav-item a {
+  transition: all 0.5s ease;
+}
+.nav-item a.active {
+  color: #18a2b9 !important;
+}
 .categories {
   padding-top: 20px;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+.categories.category-chosen {
+  transform: translateX(-110%);
+  opacity: 0;
 }
 .categories a,
 .categories a:hover {

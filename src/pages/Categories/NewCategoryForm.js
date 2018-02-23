@@ -103,8 +103,8 @@ export default class NewCategoryForm extends React.Component {
             </div>
           </div>
           <input onChange={this.categoryTitleChange.bind(this)} placeholder="Click To Edit"/>
-          <button class="badge badge-pill badge-danger" onClick={this.cancelNewCat.bind(this)}>Cancel</button>
-          <button class="badge badge-pill badge-success" onClick={this.saveNewCategory.bind(this)}>Save</button>
+          <button className="badge badge-pill badge-danger" onClick={this.cancelNewCat.bind(this)}>Cancel</button>
+          <button className="badge badge-pill badge-success" onClick={this.saveNewCategory.bind(this)}>Save</button>
         </div>
       </div>
     )

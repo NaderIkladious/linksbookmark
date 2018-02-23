@@ -7,18 +7,29 @@ export default class Categories extends React.Component {
     super(props);
     this.state = {
       formActive: false,
+      categoryChosen: false,
     }
+  }
+  navigateToCategory(id) {
+    this.setState({
+      categoryChosen: true,
+    })
+    setTimeout(() => {
+      this.props.history.push('/category/' + id);
+    }, 500);
   }
   render () {
     return (
-      <div className="row categories">
+      <div className={this.state.categoryChosen ? "row categories category-chosen" : "row categories"}>
         {
           this.props.categories.map((category) => {
             return (
               <Category
+               key={category.id}
                id={category.id}
                categoryTitle={category.title}
                categoryIcon={category.icon}
+               navigateToCategory={this.navigateToCategory.bind(this)}
               />
             )}
           )

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 export default class Header extends React.Component {
   render() {
     return (
@@ -11,11 +11,11 @@ export default class Header extends React.Component {
 
         <div className="collapse navbar-collapse" id="navbarColor03">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to='/'>Home</Link>
+            <li className="nav-item">
+              <NavLink exact className="nav-link" activeClassName="active" to='/'>Home</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to='/categories'>Bookmarks</Link>
+              <NavLink className="nav-link" activeClassName="active" to='/categories'>Bookmarks</NavLink>
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">

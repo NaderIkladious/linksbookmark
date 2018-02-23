@@ -8,6 +8,7 @@ export default class CategoryPage extends React.Component {
     this.state = {
       bookmarks: [],
       category: {},
+      animateReady: false,
     };
   }
   componentDidMount() {
@@ -18,12 +19,12 @@ export default class CategoryPage extends React.Component {
           id: this.props.match.params.id,
           title: cat.val().title,
           icon: cat.val().icon,
-        }
+        },
+        animateReady: true,
       });
     });
   }
   removeBookmark(bookmarkId) {
-    console.log('removing bookmark', bookmarkId);
     fire.database().ref().child('bookmarks/'+bookmarkId).remove();
   }
   componentWillMount() {
@@ -42,7 +43,7 @@ export default class CategoryPage extends React.Component {
         })
         this.setState({
           bookmarks: previousBookmarks,
-        })
+        });
       });
     bookmarks.on('child_removed', bookmark => {
       for (var i = 0; i < previousBookmarks.length; i++) {
@@ -57,7 +58,7 @@ export default class CategoryPage extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className={this.state.animateReady ? "category-page animate" :"category-page"}>
         <div className="category-small">
           <div className="category-icon">
             <i className={this.state.category.icon + ' fa-10x'}></i>
@@ -72,7 +73,7 @@ export default class CategoryPage extends React.Component {
               {
                 this.state.bookmarks.map(bookmark => {
                   return (
-                    <tr className="table-active">
+                    <tr className="table-active" key={bookmark.id}>
                       <th scope="row"><img alt={bookmark.title} src={bookmark.favicon} /></th>
                       <td>{bookmark.title || bookmark.url}</td>
                       <td>

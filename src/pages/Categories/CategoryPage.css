@@ -46,3 +46,23 @@ table tr:hover .bookmark-options {
 .bookmark-options li i {
   cursor: pointer;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.category-page {
+  opacity: 1;
+  transform: translateY(0px);
+}
+.category-page.animate {
+  animation-name: fadein;
+  animation-duration: 0.6s;
+}
