@@ -1,6 +1,7 @@
 import React from 'react';
 import fire from '../../fire.js';
 import './CategoryPage.css';
+import Bookmark from '../bookmarks/bookmark';
 
 export default class CategoryPage extends React.Component {
   constructor(props) {
@@ -73,16 +74,10 @@ export default class CategoryPage extends React.Component {
               {
                 this.state.bookmarks.map(bookmark => {
                   return (
-                    <tr className="table-active" key={bookmark.id}>
-                      <th scope="row"><img alt={bookmark.title} src={bookmark.favicon} /></th>
-                      <td>{bookmark.title || bookmark.url}</td>
-                      <td>
-                        <ul className="bookmark-options">
-                          <li><i className="fas fa-edit"></i></li>
-                          <li><i className="fas fa-times" onClick={this.removeBookmark.bind(this, bookmark.id)}></i></li>
-                        </ul>
-                      </td>
-                    </tr>
+                    <Bookmark 
+                      bookmark={bookmark}
+                      removeBookmark={this.removeBookmark.bind(this)}
+                    />
                   )
                 })
               }

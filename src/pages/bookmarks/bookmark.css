@@ -1,0 +1,20 @@
+tr a {
+  transition: all 0.3s ease;
+}
+tr span {
+  display: block;
+  font-size: 13px;
+  color: #989898;
+  margin-top: -4px;
+  margin-bottom: 3px;
+}
+tr a,
+tr a:hover {
+  text-decoration: none;
+}
+tr a:hover {
+  color: #18a2b9 !important;
+}
+tr a:hover span {
+  color: #989898;
+}
