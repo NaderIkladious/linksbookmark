@@ -23,10 +23,23 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .jumbotron {
   margin-top: 30px;
+}
+.not-found {
+  font-size: 100px;
+  display: block;
+  margin-top: 160px;
+}
+.not-found span {
+  display: block;
+  margin-bottom: 35px;
 }

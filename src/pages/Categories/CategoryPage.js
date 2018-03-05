@@ -1,35 +1,14 @@
 import React from 'react';
-import fire from '../../fire.js';
+import fire from '../../fire';
+import Bookmark from '../Bookmarks/bookmark';
 import './CategoryPage.css';
-import Bookmark from '../bookmarks/bookmark';
 
 export default class CategoryPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bookmarks: [],
-      category: {},
-      animateReady: false,
-    };
-  }
-  componentDidMount() {
-    const category = fire.database().ref().child('categories').child(this.props.match.params.id);
-    category.on('value', (cat) => {
-      this.setState({
-        category: {
-          id: this.props.match.params.id,
-          title: cat.val().title,
-          icon: cat.val().icon,
-        },
-        animateReady: true,
-      });
-    });
-  }
-  removeBookmark(bookmarkId) {
-    fire.database().ref().child('bookmarks/'+bookmarkId).remove();
-  }
   componentWillMount() {
-    const bookmarks = fire.database().ref().child('bookmarks');
+    const bookmarks = fire
+      .database()
+      .ref()
+      .child('bookmarks');
     let previousBookmarks = this.state.bookmarks;
 
     bookmarks
@@ -41,10 +20,10 @@ export default class CategoryPage extends React.Component {
           title: bookmark.val().title,
           url: bookmark.val().url,
           favicon: bookmark.val().favicon,
-          categoryId: bookmark.val().categoryId,
-        })
+          categoryId: bookmark.val().categoryId
+        });
         this.setState({
-          bookmarks: previousBookmarks,
+          bookmarks: previousBookmarks
         });
       });
     bookmarks.on('child_removed', bookmark => {
@@ -54,8 +33,8 @@ export default class CategoryPage extends React.Component {
         }
       }
       this.setState({
-        bookmarks: previousBookmarks,
-      })
+        bookmarks: previousBookmarks
+      });
     });
     bookmarks.on('child_changed', bookmark => {
       for (var i = 0; i < previousBookmarks.length; i++) {
@@ -65,21 +44,51 @@ export default class CategoryPage extends React.Component {
             title: bookmark.val().title,
             url: bookmark.val().url,
             favicon: bookmark.val().favicon,
-            categoryId: bookmark.val().categoryId,
-          }
+            categoryId: bookmark.val().categoryId
+          };
         }
       }
       this.setState({
-        bookmarks: previousBookmarks,
-      })
+        bookmarks: previousBookmarks
+      });
     });
   }
+  componentDidMount() {
+    const category = fire
+      .database()
+      .ref()
+      .child('categories')
+      .child(this.props.match.params.id);
+    category.on('value', cat => {
+      this.setState({
+        category: {
+          id: this.props.match.params.id,
+          title: cat.val().title,
+          icon: cat.val().icon
+        },
+        animateReady: true
+      });
+    });
+  }
+  state = {
+    bookmarks: [],
+    category: {},
+    animateReady: false
+  };
+  removeBookmark = bookmarkId => {
+    fire
+      .database()
+      .ref()
+      .child(`bookmarks/${bookmarkId}`)
+      .remove();
+  };
+
   render() {
     return (
-      <div className={this.state.animateReady ? "category-page animate" :"category-page"}>
+      <div className={this.state.animateReady ? 'category-page animate' : 'category-page'}>
         <div className="category-small">
           <div className="category-icon">
-            <i className={this.state.category.icon + ' fa-10x'}></i>
+            <i className={`${this.state.category.icon} fa-10x`} />
           </div>
           <div className="category-title">
             <h5>{this.state.category.title}</h5>
@@ -88,22 +97,13 @@ export default class CategoryPage extends React.Component {
         <div className="bookmarks">
           <table className="table table-hover">
             <tbody>
-              {
-                this.state.bookmarks.map(bookmark => {
-                  return (
-                    <Bookmark 
-                      key={bookmark.id}
-                      bookmark={bookmark}
-                      removeBookmark={this.removeBookmark.bind(this)}
-                    />
-                  )
-                })
-              }
+              {this.state.bookmarks.map(bookmark => (
+                <Bookmark key={bookmark.id} bookmark={bookmark} removeBookmark={this.removeBookmark} />
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-    )
+    );
   }
-
 }

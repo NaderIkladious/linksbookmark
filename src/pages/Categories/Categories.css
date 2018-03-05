@@ -1,0 +1,15 @@
+.categories {
+  padding-top: 20px;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+.categories.category-chosen {
+  transform: translateX(-110%);
+  opacity: 0;
+}
+.categories a,
+.categories a:hover {
+  text-decoration: none;
+}
+.categories .card-title {
+  margin-top: 10px;
+}

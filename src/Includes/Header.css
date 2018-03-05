@@ -1,0 +1,17 @@
+.nav-item a {
+  transition: all 0.5s ease;
+}
+@media (max-width: 500px) {
+  .navbar-collapse input {
+    display: inline-block !important;
+    width: 69% !important;
+    margin-right: 1% !important;
+  }
+  .navbar-collapse button {
+    display: inline-block !important;
+    width: 30% !important;
+  }
+}
+.nav-item a.active {
+  color: #18a2b9 !important;
+}
